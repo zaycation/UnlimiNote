@@ -14,6 +14,7 @@ function NotesTaker() {
   const [notes, setNotes] = useState([
     {
       title: "",
+      subject: "",
       description: "",
       priority: "",
       color: "",
@@ -23,6 +24,7 @@ function NotesTaker() {
 
   const [form, setForm] = useState({
     title: "",
+    subject: "",
     description: "",
     priority: "",
     color: "",
@@ -40,6 +42,7 @@ function NotesTaker() {
       ...notes,
       {
         title: form.title,
+        subject: form.subject,
         description: form.description,
         priority: form.priority,
         color: form.color,
@@ -66,6 +69,22 @@ function NotesTaker() {
                     id="title"
                     placeholder="Title of your note"
                     value={form.title}
+                    onChange={(value) => handleChange(value)}
+                  />
+                </Col>
+              </FormGroup>
+
+              <FormGroup row>
+                <Label for="Subject" sm={2}>
+                  Subject
+                </Label>
+                <Col sm={10}>
+                  <Input
+                    type="subject"
+                    name="subject"
+                    id="subject"
+                    placeholder="Subject of your note"
+                    value={form.subject}
                     onChange={(value) => handleChange(value)}
                   />
                 </Col>
@@ -143,9 +162,9 @@ function NotesTaker() {
               </FormGroup>
             </Form>
           </div>
-        </Col>
 
-        <Col>
+          <br />
+          
           <div className="notes-display">
             <h3>NOTES</h3>
             {notes.map((note) => {
